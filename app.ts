@@ -26,6 +26,13 @@ const logMethod = (msg: string): MethodDecorator => {
     }
 }
 
+const logParameter = (msg: string): ParameterDecorator => {
+    console.log(`${msg} evaluated`)
+    return (target: Object, propertyKey: string, parameterIndex: number): void => {
+        console.log(`${msg} called`)
+    }
+}
+
 // this is a class decorator
 // it's parameter is "Class Decorator"
 // this means that it's leveraging
@@ -43,7 +50,7 @@ class Person {
     }
 
     @logMethod("Method Decorator")
-    public addDirectReport(person: Person) {
+    public addDirectReport(@logParameter("Parameter Decorator") person: Person) {
         this._directReports.push(person)
     }
 }
