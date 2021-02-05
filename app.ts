@@ -14,7 +14,7 @@ const logClass = (msg: string): ClassDecorator => {
 
 const logProperty = (msg: string): PropertyDecorator => {
     console.log(`${msg} evaluated`)
-    return (target: Object, proeprtyKey: string): void => { // <-- comparte to the class decorator
+    return (target: Object, propertyKey: string): void => { // <-- comparte to the class decorator
         console.log(`${msg} called`)
     }
 }
